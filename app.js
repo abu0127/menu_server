@@ -1,13 +1,17 @@
 const express = require('express');
 const connectDB = require('./config/db')
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
+const app = express();
 
 const orderTableRouter = require('./router/orderTables');
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 connectDB()
 
-const app = express();
+
 app.use(cors());
 app.use(express.json());
 
