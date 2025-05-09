@@ -6,8 +6,8 @@ require('dotenv').config();
 const app = express();
 
 const orderTableRouter = require('./router/orderTables');
+const menuRouter = require('./router/menuRoutes');
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 connectDB()
 
@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routelar
-app.use('/api/tables', orderTableRouter);
-// app.use('/api/tables', require('./routes/tableRoutes'));
+app.use('/api', orderTableRouter);
+app.use('/api/menu', menuRouter);
 // app.use('/api/orders', require('./routes/orderRoutes'));
 // app.use('/api/admin', require('./routes/adminRoutes'));
 
